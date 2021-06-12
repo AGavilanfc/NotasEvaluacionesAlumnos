@@ -13,6 +13,7 @@ public class CAlumnos {
 	private String nombre;
 	private String apellido1;
 	private String apellido2;
+	private float notaMedia;
 	private CEvaluacion evaluacion1;
 	private CEvaluacion evaluacion2;
 	private CEvaluacion evaluacion3;
@@ -95,60 +96,62 @@ public class CAlumnos {
 		}
 	}
 	
-	public float getSumaNotasEvaluaciones() {
+	public float getNotaMediaEvaluaciones() {
 		
-		float sumaNotaEvaluaciones = 0;
+		float notaMediaEvaluaciones = 0;
 		
 		try {
-			sumaNotaEvaluaciones = evaluacion1.getNota() + evaluacion2.getNota() + evaluacion3.getNota();
+			notaMediaEvaluaciones = (evaluacion1.getNota() + evaluacion2.getNota() + evaluacion3.getNota()) / 3;
 		}
 		
 		catch(NullPointerException e) {
 			
 			if (evaluacion1 == null && evaluacion2 == null && evaluacion3 == null) {
 				
-				sumaNotaEvaluaciones = 0;
+				notaMediaEvaluaciones = 0;
 				
 			}
 			
 			else if (evaluacion1 == null && evaluacion2 == null && evaluacion3 != null) {
 				
-				sumaNotaEvaluaciones = evaluacion3.getNota();
+				notaMediaEvaluaciones = evaluacion3.getNota() / 3;
 				
 			}
 			
 			else if (evaluacion1 == null && evaluacion3 == null && evaluacion2 != null) {
 				
-				sumaNotaEvaluaciones = evaluacion2.getNota();
+				notaMediaEvaluaciones = evaluacion2.getNota() / 3;
 				
 			}
 			
 			else if (evaluacion2 == null && evaluacion3 == null && evaluacion1 != null) {
 				
-				sumaNotaEvaluaciones = evaluacion1.getNota();
+				notaMediaEvaluaciones = evaluacion1.getNota() / 3;
 				
 			}
 			
 			else if (evaluacion1 == null && evaluacion2 != null && evaluacion3 != null) {
 				
-				sumaNotaEvaluaciones = evaluacion2.getNota() + evaluacion3.getNota();
+				notaMediaEvaluaciones = (evaluacion2.getNota() + evaluacion3.getNota()) / 3;
 				
 			}
 			
 			else if (evaluacion2 == null && evaluacion1 != null && evaluacion3 != null) {
 				
-				sumaNotaEvaluaciones = evaluacion1.getNota() + evaluacion3.getNota();
+				notaMediaEvaluaciones = (evaluacion1.getNota() + evaluacion3.getNota()) / 3;
 				
 			}
 			
 			else if (evaluacion3 == null && evaluacion1 != null && evaluacion2 != null) {
 				
-				sumaNotaEvaluaciones = evaluacion1.getNota() + evaluacion2.getNota();
+				notaMediaEvaluaciones = (evaluacion1.getNota() + evaluacion2.getNota() / 3);
 				
 			}
 			
 		}
 		
-		return sumaNotaEvaluaciones;
+		return notaMediaEvaluaciones;
 	}
+	
+	
 }
